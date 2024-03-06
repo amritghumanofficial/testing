@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    /* CSS */
+    *{
+      margin: 0; padding:0; box-sizing: border-box;
+    }
+
+    body{
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    nav{
+    width: 100%;
+    height: 70px;
+    background-color: #3274d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    ul{
+    display: flex;
+    list-style: none;
+    gap: 1.5em;
+    }
+    .logo{
+      margin: auto;
+    }
+    .logo a{
+      color: #fff;
+      text-decoration: none;
+      font-size: 35px;
+    } 
+
+    .menu-list ul{
+      list-style: none;
+      display: flex;
+    }
+    
+    .menu-list ul li{
+      padding: 14px 16px;
+    }
+
+    .menu-list ul li a{
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .menu-list ul li a:hover{
+      color: #000;
+    }
+
+    .dropdown{
+      overflow: hidden;
+    }
+
+    .dropdown:hover {
+      background-color: gray;
+    }
+   
+    .dropbtn{
+      font-size: 16px;
+      border: none;
+      outline: none;
+      padding: 14px 16px;
+      color: #fff;
+      background-color: inherit;
+      margin: 0;
+    }
+
+    .dropdown-menu{
+      display: none;
+      position: absolute;
+      z-index: 2;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    .dropdown-menu a{
+      float: none;
+      padding-top: 10px;
+      text-align: center;
+    color: black;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-menu a:hover {
+    background-color: #ddd;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+    
+  .dropbtn:hover{
+    color: #000;
+  }
+    
+    #search-input{
+    padding: 20px;
+    width: 15vw;
+    height: 1rex;
+    border-radius: 100px;
+    }
+
+    #search{
+      margin-left: -65px;
+      margin-right: 4pc;
+      padding-top: -15px;
+      color: #fff;
+      border: none;
+      background: #3274d6;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      border: 1px solid gray;
+      width:  60px;
+      height: 41px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .addtocard{
+      cursor: pointer;
+      margin-left: -50px;
+      margin-right: 30px;
+    }
+    .addtocard i{
+      font-size: 20px;
+      color: #fff;
+      transform: scaleX(-1);
+    }
+    .login{
+      margin-left: -25px;
+      margin-right: 25px;
+    }
+    .login a{
+      color: #fff;
+      font-size: 20px;
+    }
+    </style>
+</head>
+<body>
+    
+  <!--NavBar-->
+    <nav>
+      <div class="logo">
+        <a href="loading.html">Logo</a>
+      </div>
+      <div class="menu-list">
+        <ul>
+            <li><a href="/loading.html">Home</a></li>
+            <div class="dropdown">
+              <a href="shop.html"><button class="dropbtn">Shop</button></a>
+            <div class="dropdown-menu">
+              <a href="men.html">Men</a>
+              <a href="women.html">Women</a>
+
+            </div>
+            </div>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+  <div id="search-container">
+    <input type="search" id="search-input" placeholder="Search..." />
+    <button id="search">Search</button>
+  </div>
+
+      <div class="addtocard">
+        <i class="fas fa-cart-arrow-down"></i>
+      </div>
+      <div class="login">
+        <a href="login.html"><i class="fa fa-user"></i></a>
+      </div>
+    </nav>
+
+
+    <!--Products-->
+  <div id="products">
+    <div class="cart">
+        <h1>Product 1</h1>
+        <p>Price : $100</p>
+      </div>k
+      <div class="cart">
+        <h1>Product 2</h1>
+        <p>Price : $200</p>
+      </div>
+      <div class="cart">
+        <h1>Product 3</h1>
+        <p>Price : $300</p>
+      </div>
+    </div>
+
+
+    <script>
+       // JavaScript
+let products = [
+  { name: 'Product 1', price: 100 },
+  { name: 'Product 2', price: 200 },
+  // Add more products as needed
+];
+
+function searchProducts() {
+  let input = document.getElementById('search-input').value;
+  input = input.toLowerCase();
+  let output = document.getElementById('products');
+  output.innerHTML = '';
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].name.toLowerCase().includes(input)) {
+      output.innerHTML += `<p>${products[i].name}</p>`;
+    }
+    else {
+      //output.innerHTML += `<p>No products found</p>`;
+      output[i].style.display = "none";
+    }
+  }
+}
+
+document.getElementById('search').addEventListener('click', searchProducts);
+
+    </script>
+</body>
+</html>
